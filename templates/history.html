@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BMI History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Your BMI History</h2>
+    <table border="1">
+        <tr>
+            <th>Time</th>
+            <th>Weight (kg)</th>
+            <th>Height (cm)</th>
+            <th>BMI</th>
+            <th>Status</th>
+        </tr>
+        {% for e in entries %}
+        <tr>
+            <td>{{ e.timestamp }}</td>
+            <td>{{ e.weight }}</td>
+            <td>{{ (e.height * 100) | round(1) }}</td>
+            <td>{{ e.bmi }}</td>
+            <td>{{ e.status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
